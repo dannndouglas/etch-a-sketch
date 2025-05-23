@@ -44,12 +44,14 @@ let isMouseDown = false;
 
 gridContainer.addEventListener("mousedown", (e) => {
     isMouseDown = true;
-    if (e.target != gridContainer && e.buttons == 1) {
-        e.target.style.backgroundColor = bgColor;
-    }
-
-    if (e.target != gridContainer && e.buttons == 2) {
-        e.target.style.backgroundColor = "#FFFFFF";
+    if (e.target != gridContainer && e.target.classList.contains('gridSquare')) {
+        if (e.buttons == 1) { // Left click for drawing
+            e.target.style.backgroundColor = bgColor;
+            e.target.classList.add("drawn");
+        } else if (e.buttons == 2) { // Right click for erasing
+            e.target.style.backgroundColor = "#FFFFFF";
+            e.target.classList.remove("drawn");
+        }
     }
 });
 
@@ -61,12 +63,14 @@ gridContainer.addEventListener("mouseover", (e) => {
 
     if (!isMouseDown) return;
 
-    if (e.target != gridContainer && e.buttons == 1) {
-        e.target.style.backgroundColor = bgColor;
-    }
-
-    if (e.target != gridContainer && e.buttons == 2) {
-        e.target.style.backgroundColor = "#FFFFFF";
+    if (e.target != gridContainer && e.target.classList.contains('gridSquare')) {
+        if (e.buttons == 1) { // Left click for drawing
+            e.target.style.backgroundColor = bgColor;
+            e.target.classList.add("drawn");
+        } else if (e.buttons == 2) { // Right click for erasing
+            e.target.style.backgroundColor = "#FFFFFF";
+            e.target.classList.remove("drawn");
+        }
     }
 });
 
@@ -84,5 +88,6 @@ clearButton.addEventListener("click", () => {
     gridSquare = document.querySelectorAll(".gridSquare");
     gridSquare.forEach(square => {
             square.style.backgroundColor = "#FFFFFF";
+            square.classList.remove("drawn");
         });
 })
