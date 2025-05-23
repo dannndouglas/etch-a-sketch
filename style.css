@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin: 20px 0 10px 0;
+}
+
+#gridContainer {
+    width: 605px;
+    height: 605px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.gridSquare {
+    width: 10%;
+    height: 10%;
+    border: 0.1px solid rgb(236, 236, 236);
+}
